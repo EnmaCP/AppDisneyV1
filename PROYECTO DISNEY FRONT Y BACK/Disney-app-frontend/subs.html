@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototipo Streaming Clase</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">DISNEY CLASSICS</div>
+        <div class="menu-items">
+            <a href="index.html">Inicio</a>
+            <a href="#" id="btn-search-nav">Búsqueda</a>
+            <a href="#">Originales</a>
+            <a href="#">Películas</a>
+        </div>
+        <div class="profile-container">
+            <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                alt="Perfil" class="avatar-img">
+
+            <div class="dropdown-menu">
+                <a href="#">Editar Perfiles</a>
+                <a href="#">Ajustes de Cuenta</a>
+                <a href="#">Ayuda</a>
+                <a href="#" style="color: #ff4f4f;">Cerrar Sesión</a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="pricing-container">
+            <div class="pricing-header">
+                <h1>Elige tu plan</h1>
+                <p>Cancela en cualquier momento. Sin compromisos.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="plan-card">
+                    <h3>Estándar</h3>
+                    <div class="price">9,99€<span>/mes</span></div>
+                    <ul class="features">
+                        <li>Calidad 1080p Full HD</li>
+                        <li>2 dispositivos a la vez</li>
+                        <li>Descargas permitidas</li>
+                    </ul>
+                    <button class="btn-plan">ELEGIR ESTÁNDAR</button>
+                </div>
+
+                <div class="plan-card featured">
+                    <div class="badge">RECOMENDADO</div>
+                    <h3>Premium</h3>
+                    <div class="price">13,99€<span>/mes</span></div>
+                    <ul class="features">
+                        <li>Calidad 4K UHD y HDR</li>
+                        <li>4 dispositivos a la vez</li>
+                        <li>Sonido Dolby Atmos</li>
+                        <li>Sin anuncios</li>
+                    </ul>
+                    <button class="btn-plan primary">ELEGIR PREMIUM</button>
+                </div>
+
+                <div class="plan-card">
+                    <h3>Platino</h3>
+                    <div class="price">19,99€<span>/mes</span></div>
+                    <ul class="features">
+                        <li>Todo lo de Premium</li>
+                        <li>Acceso anticipado a estrenos</li>
+                        <li>6 dispositivos a la vez</li>
+                    </ul>
+                    <button class="btn-plan">ELEGIR PLATINO</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="app.js"></script>
+    <!-- Search Overlay -->
+    <div id="search-overlay" class="search-overlay">
+        <div class="search-content">
+            <span class="material-symbols-outlined search-icon">search</span>
+            <input type="text" id="search-input" placeholder="Títulos, personajes o géneros" autocomplete="off">
+            <button id="close-search" class="close-search-btn">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+    </div>
+</body>

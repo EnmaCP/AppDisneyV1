@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disney+ Clone con API</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">DISNEY CLASSICS</div>
+        <div class="menu-items">
+            <a href="#">Inicio</a>
+            <a href="#" id="btn-search-nav">Búsqueda</a>
+            <a href="#">Originales</a>
+            <a href="#">Películas</a>
+        </div>
+
+        <a href="subs.html" class="btn-subscribe">PLAN DE SUBSCRIPCIONES</a>
+
+        <div class="profile-container">
+            <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                alt="Perfil" class="avatar-img">
+            <div class="dropdown-menu">
+                <a href="#">Ajustes</a>
+                <a href="login.html">Iniciar Sesión</a>
+                <a href="#">Cerrar Sesión</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero" id="home-hero">
+        <div class="hero-content">
+            <h1 class="hero-title" id="hero-title">BLACK PANTHER:<br>WAKANDA FOREVER</h1>
+            <p class="hero-desc" id="hero-desc">La reina Ramonda, Shuri, M'Baku, Okoye y las Dora Milaje luchan para
+                proteger a su nación de las potencias mundiales que intervienen tras la muerte del rey T'Challa.</p>
+            <div class="hero-btns">
+                <button class="btn-play"><span class="material-symbols-outlined fill-icon">play_arrow</span> VER
+                    AHORA</button>
+                <button class="btn-add"><span class="material-symbols-outlined">add</span> MI LISTA</button>
+            </div>
+        </div>
+
+        <div class="hero-controls" id="hero-controls">
+            <!-- Los puntos se generarán con JS -->
+        </div>
+    </div>
+
+    <div class="brands-container">
+        <a href="action.html" class="brand-card brand-action" style="text-decoration: none; color: white;"><span
+                class="brand-text">ACCION</span></a>
+        <a href="drama.html" class="brand-card brand-drama" style="text-decoration: none; color: white;"><span
+                class="brand-text">DRAMA</span></a>
+        <a href="misterio.html" class="brand-card brand-misterio" style="text-decoration: none; color: white;"><span
+                class="brand-text">MISTERIO</span></a>
+        <a href="romance.html" class="brand-card brand-romance" style="text-decoration: none; color: white;"><span
+                class="brand-text">ROMANCE</span></a>
+        <a href="terror.html" class="brand-card brand-terror" style="text-decoration: none; color: white;"><span
+                class="brand-text">TERROR</span></a>
+    </div>
+
+    <div class="movies-section">
+
+        <h4>Recomendado para ti</h4>
+        <div class="movies-slider">
+            <button class="slider-btn btn-left"><span class="material-symbols-outlined">arrow_back_ios</span></button>
+            <div class="movies-row">
+                <!-- Card 1 -->
+                <div class="poster-card">
+                    <div class="card-image-wrapper">
+                        <img alt="Avengers Endgame"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhBrkgvM5cJgj841EsmPRRS4_rHh3S3BKs-WlllOzdJIzd9tpx8sCSBnPb03EmmGyXu2lwqAfnaOVthljrpBjuNqLs7jZpAgrm0xT4IdACiaOFjNBqrQolLlbrb04VY5-VHpNJlpEwpEOvDF1lmaGBVA6nYfcHk2KoGoUy0ZYnAvd34KJ4qz1rEvOOJadd9PYUv34ItleFZ1YVOrw-SieYFvhwwavCIFv1T-Z8G5NUupAo8tjRZKREb-U-EQm0PYhTXkc-emAX0gs" />
+                        <div class="poster-overlay">
+                            <div class="poster-content">
+                                <h3>Endgame</h3>
+                                <div class="meta-info">
+                                    <span class="badge">PG-13</span>
+                                    <span>2019</span>
+                                </div>
+                                <div class="card-buttons">
+                                    <button class="btn-play"><span
+                                            class="material-symbols-outlined fill-icon">play_arrow</span></button>
+                                    <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="poster-card">
+                    <div class="card-image-wrapper">
+                        <img alt="Spider-Man"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIeDzAzUQq9e1vqWBrbRFoIq4U3tzk1WBACDLkayBdvOhpCOugl6g49R1B-CHfTpLibd22nIt_rtWBn583Df5_CV6ecKLpEr_HkmG53z59RqIXV8YWgMkOj3Z5BXdATKn6gUsGEtGN8KRY2rBBBO0utFlydPwK6qava_9oVd53u4624WePdILIrJUuz-5v73q2HI3rHDX7uQSdHDq9Vyc4IdnJXYtUjDFxnV_Hmfs-Us-DAYThiMqC6_ORlyIZnccCt5pmUYWsNIk" />
+                        <div class="poster-overlay">
+                            <div class="poster-content">
+                                <h3>Spider-Man</h3>
+                                <div class="meta-info">
+                                    <span class="badge">PG-13</span>
+                                    <span>2021</span>
+                                </div>
+                                <div class="card-buttons">
+                                    <button class="btn-play"><span
+                                            class="material-symbols-outlined fill-icon">play_arrow</span></button>
+                                    <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="poster-card">
+                    <div class="card-image-wrapper">
+                        <img alt="Dune"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBO6zqTE0WLsfwYhKS7H4O4hTIiMYHuvs_wfgybxk5j7Z2Xl16xpU7jtQvAXnkLPFAwSqQSs0YLlrQ0Yn-sT4yOtOqB01A1022AApmprH9arrllfWy8drIrjYP2hpHrXAz9rvnHbTiNiakv3KWRieJvp3pSrrIYrHywO9BzACibIh3JuJwpfo8ZIK6yAvFEMzUn28NQ3FOVluSLIUzz3ZFgT8PmQdzYCv_u0tgkWr9w63tR73Q9xL0XKs0nNvbx--4K6Ba0h23mJSo" />
+                        <div class="poster-overlay">
+                            <div class="poster-content">
+                                <h3>Dune</h3>
+                                <div class="meta-info">
+                                    <span class="badge">PG-13</span>
+                                    <span>2021</span>
+                                </div>
+                                <div class="card-buttons">
+                                    <button class="btn-play"><span
+                                            class="material-symbols-outlined fill-icon">play_arrow</span></button>
+                                    <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="poster-card">
+                    <div class="card-image-wrapper">
+                        <img alt="Mandalorian" src="https://www.ecartelera.com/carteles-series/1100/1164/007_m.jpg" />
+                        <div class="poster-overlay">
+                            <div class="poster-content">
+                                <h3>Mandalorian</h3>
+                                <div class="meta-info">
+                                    <span class="badge">TV-14</span>
+                                    <span>2019</span>
+                                </div>
+                                <div class="card-buttons">
+                                    <button class="btn-play"><span
+                                            class="material-symbols-outlined fill-icon">play_arrow</span></button>
+                                    <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="poster-card">
+                    <div class="card-image-wrapper">
+                        <img alt="Black Widow"
+                            src="https://m.media-amazon.com/images/I/81Jgy1tfvcL._AC_UF1000,1000_QL80_.jpg" />
+                        <div class="poster-overlay">
+                            <div class="poster-content">
+                                <h3>Black Widow</h3>
+                                <div class="meta-info">
+                                    <span class="badge">PG-13</span>
+                                    <span>2021</span>
+                                </div>
+                                <div class="card-buttons">
+                                    <button class="btn-play"><span
+                                            class="material-symbols-outlined fill-icon">play_arrow</span></button>
+                                    <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="poster-card">
+                    <div class="card-image-wrapper">
+                        <img alt="Doctor Strange"
+                            src="https://upload.wikimedia.org/wikipedia/en/thumb/1/18/Benedict_Cumberbatch_as_Doctor_Strange.jpeg/250px-Benedict_Cumberbatch_as_Doctor_Strange.jpeg" />
+                        <div class="poster-overlay">
+                            <div class="poster-content">
+                                <h3>Doctor Strange</h3>
+                                <div class="meta-info">
+                                    <span class="badge">PG-13</span>
+                                    <span>2016</span>
+                                </div>
+                                <div class="card-buttons">
+                                    <button class="btn-play"><span
+                                            class="material-symbols-outlined fill-icon">play_arrow</span></button>
+                                    <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="poster-card">
+                    <div class="card-image-wrapper">
+                        <img alt="Thor Love and Thunder"
+                            src="https://play-lh.googleusercontent.com/yw6Rojg-NCeg69QD8T41MOwMuF2mRF7x2B91sjFxCHJES2ccGmO0vX7LueypEVtYWv647z0Gd89ZmfvQ1bNf" />
+                        <div class="poster-overlay">
+                            <div class="poster-content">
+                                <h3>Thor: Love & Thunder</h3>
+                                <div class="meta-info">
+                                    <span class="badge">PG-13</span>
+                                    <span>2022</span>
+                                </div>
+                                <div class="card-buttons">
+                                    <button class="btn-play"><span
+                                            class="material-symbols-outlined fill-icon">play_arrow</span></button>
+                                    <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="poster-card">
+                    <div class="card-image-wrapper">
+                        <img alt="Iron Man"
+                            src="https://alfabetajuega.com/hero/2025/06/iron-man-robert-downey-jr.-marvel-studios-ucm.jpg?width=1200" />
+                        <div class="poster-overlay">
+                            <div class="poster-content">
+                                <h3>Iron Man</h3>
+                                <div class="meta-info">
+                                    <span class="badge">PG-13</span>
+                                    <span>2008</span>
+                                </div>
+                                <div class="card-buttons">
+                                    <button class="btn-play"><span
+                                            class="material-symbols-outlined fill-icon">play_arrow</span></button>
+                                    <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="poster-card">
+                    <div class="card-image-wrapper">
+                        <img alt="Captain Marvel"
+                            src="https://cdn.marvel.com/content/2x/captainmarvel_lob_mas_mob_03_0.jpg" />
+                        <div class="poster-overlay">
+                            <div class="poster-content">
+                                <h3>Captain Marvel</h3>
+                                <div class="meta-info">
+                                    <span class="badge">PG-13</span>
+                                    <span>2019</span>
+                                </div>
+                                <div class="card-buttons">
+                                    <button class="btn-play"><span
+                                            class="material-symbols-outlined fill-icon">play_arrow</span></button>
+                                    <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="slider-btn btn-right"><span
+                    class="material-symbols-outlined">arrow_forward_ios</span></button>
+        </div>
+
+        <h4>Nuevos lanzamientos (Desde API)</h4>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="">Todas</button>
+            <button class="filter-btn" data-category="accion">Acción</button>
+            <button class="filter-btn" data-category="drama">Drama</button>
+            <button class="filter-btn" data-category="misterio">Misterio</button>
+            <button class="filter-btn" data-category="romance">Romance</button>
+            <button class="filter-btn" data-category="terror">Terror</button>
+        </div>
+
+        <div class="movies-slider">
+            <button class="slider-btn btn-left"><span class="material-symbols-outlined">arrow_back_ios</span></button>
+            <div class="movies-row" id="movies-container">
+            </div>
+            <button class="slider-btn btn-right"><span
+                    class="material-symbols-outlined">arrow_forward_ios</span></button>
+        </div>
+
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-logo">DISNEY CLASSICS</div>
+
+            <div class="footer-links">
+                <a href="#">Política de privacidad</a>
+                <a href="#">Acuerdo de suscripción</a>
+                <a href="#">Ayuda</a>
+                <a href="#">Dispositivos compatibles</a>
+                <a href="#">Acerca de Disney Classics</a>
+                <a href="#">Publicidad personalizada</a>
+            </div>
+
+            <div class="footer-social">
+                <span class="material-symbols-outlined">public</span>
+                <span class="material-symbols-outlined">share</span>
+                <span class="material-symbols-outlined">thumb_up</span>
+            </div>
+
+            <p class="footer-copy">
+                © 2026 Disney Classics. Todos los derechos reservados. El contenido y los materiales de Disney Classics
+                están sujetos a disponibilidad.
+                Disney Classics es un servicio por suscripción proporcionado por Disney Classics Streaming.
+            </p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+
+    <!-- Search Overlay -->
+    <div id="search-overlay" class="search-overlay">
+        <div class="search-content">
+            <span class="material-symbols-outlined search-icon">search</span>
+            <input type="text" id="search-input" placeholder="Títulos, personajes o géneros" autocomplete="off">
+            <button id="close-search" class="close-search-btn">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+    </div>
+
+</body>
+
+</html>
