@@ -107,60 +107,43 @@ sliders.forEach(slider => {
     }
 });
 
-// Search Overlay Logic
-// Search Overlay Logic
+// Inline Search Logic
 document.addEventListener("DOMContentLoaded", () => {
     const btnSearchNav = document.getElementById("btn-search-nav");
-    const searchOverlay = document.getElementById("search-overlay");
-    const closeSearchBtn = document.getElementById("close-search");
-    const searchInput = document.getElementById("search-input");
+    const searchContainer = document.getElementById("search-container");
+    const searchInput = document.getElementById("search-input-nav");
 
-    if (btnSearchNav && searchOverlay && closeSearchBtn && searchInput) {
-        // Open Search
+    if (btnSearchNav && searchContainer && searchInput) {
+        // Toggle search on button click
         btnSearchNav.addEventListener("click", (e) => {
             e.preventDefault();
-            searchOverlay.classList.add("active");
-            setTimeout(() => searchInput.focus(), 100); // Focus input after transition
-        });
+            searchContainer.classList.toggle("active");
 
-        // Close on X button
-        closeSearchBtn.addEventListener("click", () => {
-            searchOverlay.classList.remove("active");
-        });
-
-        // Close on click outside (background)
-        searchOverlay.addEventListener("click", (e) => {
-            if (e.target === searchOverlay) {
-                searchOverlay.classList.remove("active");
+            if (searchContainer.classList.contains("active")) {
+                setTimeout(() => searchInput.focus(), 100);
             }
+        });
+
+        // Close search when clicking outside
+        document.addEventListener("click", (e) => {
+            if (!searchContainer.contains(e.target) && searchContainer.classList.contains("active")) {
+                searchContainer.classList.remove("active");
+                searchInput.value = "";
+            }
+        });
+
+        // Prevent closing when clicking inside search
+        searchContainer.addEventListener("click", (e) => {
+            e.stopPropagation();
         });
 
         // Close on Escape key
         document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape" && searchOverlay.classList.contains("active")) {
-                searchOverlay.classList.remove("active");
+            if (e.key === "Escape" && searchContainer.classList.contains("active")) {
+                searchContainer.classList.remove("active");
+                searchInput.value = "";
             }
         });
-
-        // LIVE SEARCH LISTENER
-        searchInput.addEventListener("input", (e) => {
-            const searchTerm = e.target.value;
-            // Get current active category
-            const activeBtn = document.querySelector(".filter-btn.active");
-            const category = activeBtn ? activeBtn.getAttribute("data-category") : "";
-
-            loadMovies(category, searchTerm);
-        });
-
-        // Close on Enter key
-        searchInput.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                searchOverlay.classList.remove("active");
-            }
-        });
-
-    } else {
-        console.error("Search elements not found in DOM");
     }
 });
 
@@ -251,4 +234,194 @@ function resetHeroInterval() {
 // Init when DOM loads (appending to existing event logic if possible, or just running it)
 document.addEventListener("DOMContentLoaded", () => {
     initHeroCarousel();
+    initMovieModal();
 });
+
+// --- MOVIE MODAL FUNCTIONALITY ---
+function initMovieModal() {
+    const modal = document.getElementById('movie-modal');
+    const modalClose = document.getElementById('modal-close');
+    const modalBackdrop = modal.querySelector('.modal-backdrop');
+
+    // Sample movie data for demonstration
+    const movieData = {
+        'Endgame': {
+            title: 'Avengers: Endgame',
+            rating: 4.8,
+            year: 2019,
+            duration: '3h 2m',
+            badge: 'PG-13',
+            genres: ['Acción', 'Aventura', 'Ciencia Ficción'],
+            description: 'Los devastadores acontecimientos puestos en marcha por Thanos, que acabaron con la mitad del universo y fracturaron a los Vengadores, obligan a los héroes restantes a tomar una última posición en la gran conclusión de 22 películas de Marvel Studios.',
+            director: 'Anthony y Joe Russo',
+            cast: 'Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson'
+        },
+        'Spider-Man': {
+            title: 'Spider-Man: No Way Home',
+            rating: 4.7,
+            year: 2021,
+            duration: '2h 28m',
+            badge: 'PG-13',
+            genres: ['Acción', 'Aventura', 'Superhéroes'],
+            description: 'Por primera vez en la historia cinematográfica de Spider-Man, nuestro amigable héroe del vecindario es desenmascarado y ya no puede separar su vida normal de los enormes riesgos que conlleva ser un superhéroe.',
+            director: 'Jon Watts',
+            cast: 'Tom Holland, Zendaya, Benedict Cumberbatch, Jacob Batalon'
+        },
+        'Dune': {
+            title: 'Dune',
+            rating: 4.5,
+            year: 2021,
+            duration: '2h 35m',
+            badge: 'PG-13',
+            genres: ['Ciencia Ficción', 'Aventura', 'Drama'],
+            description: 'Una epopeya mitológica y un viaje emocional, Dune cuenta la historia de Paul Atreides, un joven brillante y talentoso nacido con un gran destino más allá de su comprensión, que debe viajar al planeta más peligroso del universo.',
+            director: 'Denis Villeneuve',
+            cast: 'Timothée Chalamet, Rebecca Ferguson, Oscar Isaac, Josh Brolin'
+        },
+        'Mandalorian': {
+            title: 'The Mandalorian',
+            rating: 4.6,
+            year: 2019,
+            duration: '40m/episodio',
+            badge: 'TV-14',
+            genres: ['Ciencia Ficción', 'Aventura', 'Western'],
+            description: 'El viaje del Mandaloriano a través de la galaxia de Star Wars continúa. Din Djarin, antaño un cazarrecompensas solitario, se ha reencontrado con Grogu. Mientras tanto, la Nueva República lucha por liderar la galaxia lejos de su oscuro pasado.',
+            director: 'Jon Favreau',
+            cast: 'Pedro Pascal, Grogu, Katee Sackhoff, Carl Weathers'
+        },
+        'Black Widow': {
+            title: 'Black Widow',
+            rating: 4.3,
+            year: 2021,
+            duration: '2h 14m',
+            badge: 'PG-13',
+            genres: ['Acción', 'Aventura', 'Espionaje'],
+            description: 'Natasha Romanoff, también conocida como Black Widow, se enfrenta a las partes más oscuras de su historia cuando surge una peligrosa conspiración vinculada a su pasado. Perseguida por una fuerza que no se detendrá ante nada para derribarla.',
+            director: 'Cate Shortland',
+            cast: 'Scarlett Johansson, Florence Pugh, David Harbour, Rachel Weisz'
+        },
+        'Doctor Strange': {
+            title: 'Doctor Strange',
+            rating: 4.4,
+            year: 2016,
+            duration: '1h 55m',
+            badge: 'PG-13',
+            genres: ['Acción', 'Aventura', 'Fantasía'],
+            description: 'El Dr. Stephen Strange, un neurocirujano de renombre mundial, busca curación en un lugar misterioso conocido como Kamar-Taj. Rápidamente descubre que no es solo un centro de curación, sino también la primera línea de batalla contra fuerzas oscuras.',
+            director: 'Scott Derrickson',
+            cast: 'Benedict Cumberbatch, Chiwetel Ejiofor, Rachel McAdams, Tilda Swinton'
+        },
+        'Thor: Love & Thunder': {
+            title: 'Thor: Love and Thunder',
+            rating: 4.2,
+            year: 2022,
+            duration: '1h 59m',
+            badge: 'PG-13',
+            genres: ['Acción', 'Aventura', 'Comedia'],
+            description: 'Thor se embarca en un viaje diferente a todo lo que ha enfrentado: una búsqueda de la paz interior. Pero su retiro se ve interrumpido por un asesino galáctico conocido como Gorr el Carnicero de Dioses, que busca la extinción de los dioses.',
+            director: 'Taika Waititi',
+            cast: 'Chris Hemsworth, Natalie Portman, Christian Bale, Tessa Thompson'
+        },
+        'Iron Man': {
+            title: 'Iron Man',
+            rating: 4.6,
+            year: 2008,
+            duration: '2h 6m',
+            badge: 'PG-13',
+            genres: ['Acción', 'Aventura', 'Ciencia Ficción'],
+            description: 'Tony Stark, un industrial multimillonario e ingenioso inventor, es secuestrado y obligado a construir un arma devastadora. En cambio, usando su inteligencia y ingenio, Tony construye una armadura de alta tecnología y escapa del cautiverio.',
+            director: 'Jon Favreau',
+            cast: 'Robert Downey Jr., Gwyneth Paltrow, Jeff Bridges, Terrence Howard'
+        },
+        'Captain Marvel': {
+            title: 'Captain Marvel',
+            rating: 4.3,
+            year: 2019,
+            duration: '2h 4m',
+            badge: 'PG-13',
+            genres: ['Acción', 'Aventura', 'Ciencia Ficción'],
+            description: 'Carol Danvers se convierte en una de las heroínas más poderosas del universo cuando la Tierra se ve atrapada en medio de una guerra galáctica entre dos razas alienígenas. Ambientada en la década de 1990, Captain Marvel es una aventura completamente nueva.',
+            director: 'Anna Boden, Ryan Fleck',
+            cast: 'Brie Larson, Samuel L. Jackson, Ben Mendelsohn, Jude Law'
+        }
+    };
+
+    // Function to open modal with movie data
+    function openModal(movieTitle, posterUrl) {
+        const data = movieData[movieTitle] || {
+            title: movieTitle,
+            rating: 4.5,
+            year: 2024,
+            duration: '2h 30m',
+            badge: 'PG-13',
+            genres: ['Acción', 'Aventura'],
+            description: 'Una emocionante película llena de acción y aventura que te mantendrá al borde de tu asiento.',
+            director: 'Director Desconocido',
+            cast: 'Elenco Estelar'
+        };
+
+        // Populate modal with data
+        document.getElementById('modal-poster-img').src = posterUrl;
+        document.getElementById('modal-title').textContent = data.title;
+        document.getElementById('modal-rating-value').textContent = data.rating;
+        document.getElementById('modal-year').textContent = data.year;
+        document.getElementById('modal-duration').textContent = data.duration;
+        document.getElementById('modal-badge').textContent = data.badge;
+        document.getElementById('modal-description').textContent = data.description;
+        document.getElementById('modal-director').textContent = data.director;
+        document.getElementById('modal-cast').textContent = data.cast;
+
+        // Update genres
+        const genresContainer = document.getElementById('modal-genres');
+        genresContainer.innerHTML = '';
+        data.genres.forEach(genre => {
+            const tag = document.createElement('span');
+            tag.className = 'genre-tag';
+            tag.textContent = genre;
+            genresContainer.appendChild(tag);
+        });
+
+        // Show modal
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    // Function to close modal
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    // Add click listeners to all poster cards
+    document.addEventListener('click', (e) => {
+        const card = e.target.closest('.poster-card');
+        if (card) {
+            // Don't open modal if clicking on buttons
+            if (e.target.closest('.btn-play, .btn-plus')) {
+                return;
+            }
+
+            const img = card.querySelector('img');
+            const title = card.querySelector('h3');
+            if (img && title) {
+                openModal(title.textContent, img.src);
+            }
+        }
+    });
+
+    // Close modal handlers
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+
+    if (modalBackdrop) {
+        modalBackdrop.addEventListener('click', closeModal);
+    }
+
+    // Close on ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}
