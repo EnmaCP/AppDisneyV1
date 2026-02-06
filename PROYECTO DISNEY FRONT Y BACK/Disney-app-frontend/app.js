@@ -3,9 +3,12 @@ const API = "http://localhost:3000/api/movies";
 // Seleccionamos el contenedor que creamos en el HTML
 const $container = document.getElementById("movies-container");
 
-async function loadMovies(category = "") {
+async function loadMovies(category = "", search = "") {
     try {
-        const url = category ? `${API}?category=${category}` : API;
+        let url = `${API}?`;
+        if (category) url += `category=${category}&`;
+        if (search) url += `search=${search}&`;
+
         const response = await fetch(url);
         const data = await response.json();
 
@@ -69,7 +72,9 @@ filterButtons.forEach(btn => {
         btn.classList.add("active");
 
         const category = btn.getAttribute("data-category");
-        loadMovies(category);
+        // Get current search if any
+        const search = document.getElementById("search-input").value;
+        loadMovies(category, search);
     });
 });
 
@@ -110,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeSearchBtn = document.getElementById("close-search");
     const searchInput = document.getElementById("search-input");
 
-    if (btnSearchNav && searchOverlay && closeSearchBtn) {
+    if (btnSearchNav && searchOverlay && closeSearchBtn && searchInput) {
         // Open Search
         btnSearchNav.addEventListener("click", (e) => {
             e.preventDefault();
@@ -136,6 +141,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 searchOverlay.classList.remove("active");
             }
         });
+
+        // LIVE SEARCH LISTENER
+        searchInput.addEventListener("input", (e) => {
+            const searchTerm = e.target.value;
+            // Get current active category
+            const activeBtn = document.querySelector(".filter-btn.active");
+            const category = activeBtn ? activeBtn.getAttribute("data-category") : "";
+
+            loadMovies(category, searchTerm);
+        });
+
+        // Close on Enter key
+        searchInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                searchOverlay.classList.remove("active");
+            }
+        });
+
     } else {
         console.error("Search elements not found in DOM");
     }

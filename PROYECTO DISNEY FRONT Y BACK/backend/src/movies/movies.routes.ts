@@ -7,17 +7,25 @@ export function createMovieRouter(db: Db) {
     // GET /api/movies?category=slug
     r.get("/", (req, res) => {
         const categorySlug = req.query.category as string;
-        let sql = "SELECT Titulo as movie, posterURL as imagen_url, AnyoEstreno as year FROM MOVIES";
+        const searchTerm = req.query.search as string;
+
+        let sql = "SELECT m.Titulo as movie, m.posterURL as imagen_url, m.AnyoEstreno as year FROM MOVIES m";
         let params: any[] = [];
+        let conditions: string[] = [];
 
         if (categorySlug) {
-            sql = `
-                SELECT m.Titulo as movie, m.posterURL as imagen_url, m.AnyoEstreno as year 
-                FROM MOVIES m 
-                JOIN CATEGORIAS c ON m.idCategoria = c.idCategoria 
-                WHERE c.slug = ?
-            `;
+            sql += " JOIN CATEGORIAS c ON m.idCategoria = c.idCategoria";
+            conditions.push("c.slug = ?");
             params.push(categorySlug);
+        }
+
+        if (searchTerm) {
+            conditions.push("m.Titulo LIKE ?");
+            params.push(`%${searchTerm}%`);
+        }
+
+        if (conditions.length > 0) {
+            sql += " WHERE " + conditions.join(" AND ");
         }
 
         db.all(sql, params, (err, rows) => {
