@@ -7,12 +7,12 @@ export function createMovieRouter(db: Db) {
     // GET /api/movies?category=slug
     r.get("/", (req, res) => {
         const categorySlug = req.query.category as string;
-        let sql = "SELECT Titulo as movie, posterURL as imagen_url FROM MOVIES";
+        let sql = "SELECT Titulo as movie, posterURL as imagen_url, AnyoEstreno as year FROM MOVIES";
         let params: any[] = [];
 
         if (categorySlug) {
             sql = `
-                SELECT m.Titulo as movie, m.posterURL as imagen_url 
+                SELECT m.Titulo as movie, m.posterURL as imagen_url, m.AnyoEstreno as year 
                 FROM MOVIES m 
                 JOIN CATEGORIAS c ON m.idCategoria = c.idCategoria 
                 WHERE c.slug = ?

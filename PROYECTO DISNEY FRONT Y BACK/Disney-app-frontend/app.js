@@ -36,7 +36,7 @@ async function loadMovies(category = "") {
                 <h3>${item.movie}</h3>
                 <div class="meta-info">
                     <span class="badge">PG-13</span>
-                    <span>2024</span>
+                    <span>${item.year || 'Unknown'}</span>
                 </div>
                 <div class="card-buttons">
                     <button class="btn-play"><span class="material-symbols-outlined fill-icon">play_arrow</span></button>
