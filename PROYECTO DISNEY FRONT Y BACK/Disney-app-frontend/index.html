@@ -19,16 +19,47 @@
 <body>
 
     <nav>
-        <div class="logo">DISNEY CLASSICS</div>
+        <a href="index.html" class="logo-link">
+            <svg class="logo-svg" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#a0a0a0;stop-opacity:1" />
+                    </linearGradient>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+                        <feMerge>
+                            <feMergeNode in="coloredBlur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                </defs>
+                <!-- Star accent -->
+                <path d="M 15,15 L 17,20 L 22,20 L 18,23 L 20,28 L 15,25 L 10,28 L 12,23 L 8,20 L 13,20 Z"
+                    fill="url(#logoGradient)" filter="url(#glow)" opacity="0.8" />
+                <!-- Text -->
+                <text x="30" y="35" font-family="'Arial Black', sans-serif" font-size="20" font-weight="900"
+                    fill="url(#logoGradient)" letter-spacing="2">
+                    DISNEY
+                </text>
+                <text x="30" y="52" font-family="'Arial', sans-serif" font-size="12" font-weight="600"
+                    fill="url(#logoGradient)" letter-spacing="3">
+                    CLASSICS
+                </text>
+            </svg>
+        </a>
         <div class="menu-items">
             <a href="#">Inicio</a>
             <a href="#">Originales</a>
             <a href="#">Películas</a>
         </div>
 
-        <button id="btn-search-nav" class="search-icon-btn">
-            <span class="material-symbols-outlined">search</span>
-        </button>
+        <div class="search-container" id="search-container">
+            <button id="btn-search-nav" class="search-icon-btn">
+                <span class="material-symbols-outlined">search</span>
+            </button>
+            <input type="text" id="search-input-nav" class="search-input-nav" placeholder="Buscar películas..." />
+        </div>
 
         <a href="subs.html" class="btn-subscribe">PLAN DE SUBSCRIPCIONES</a>
 
@@ -330,14 +361,76 @@
 
     <script src="app.js"></script>
 
-    <!-- Search Overlay -->
-    <div id="search-overlay" class="search-overlay">
-        <div class="search-content">
-            <span class="material-symbols-outlined search-icon">search</span>
-            <input type="text" id="search-input" placeholder="Títulos, personajes o géneros" autocomplete="off">
-            <button id="close-search" class="close-search-btn">
+
+
+    <!-- Movie Detail Modal -->
+    <div id="movie-modal" class="movie-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-container">
+            <button class="modal-close-btn" id="modal-close">
                 <span class="material-symbols-outlined">close</span>
             </button>
+
+            <div class="modal-content">
+                <div class="modal-poster">
+                    <img id="modal-poster-img" src="" alt="Movie Poster">
+                    <div class="modal-poster-overlay">
+                        <button class="modal-play-btn">
+                            <span class="material-symbols-outlined fill-icon">play_arrow</span>
+                            <span>Reproducir</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="modal-info">
+                    <h2 id="modal-title" class="modal-title">Movie Title</h2>
+
+                    <div class="modal-meta">
+                        <div class="modal-rating">
+                            <span class="material-symbols-outlined star-icon">star</span>
+                            <span id="modal-rating-value">4.5</span>
+                        </div>
+                        <span class="modal-year" id="modal-year">2024</span>
+                        <span class="modal-duration" id="modal-duration">2h 30m</span>
+                        <span class="modal-badge" id="modal-badge">PG-13</span>
+                    </div>
+
+                    <div class="modal-genres" id="modal-genres">
+                        <span class="genre-tag">Acción</span>
+                        <span class="genre-tag">Aventura</span>
+                        <span class="genre-tag">Ciencia Ficción</span>
+                    </div>
+
+                    <p class="modal-description" id="modal-description">
+                        Esta es la descripción de la película que aparecerá cuando se haga clic en una tarjeta.
+                    </p>
+
+                    <div class="modal-actions">
+                        <button class="modal-action-btn primary">
+                            <span class="material-symbols-outlined fill-icon">play_arrow</span>
+                            Ver Ahora
+                        </button>
+                        <button class="modal-action-btn secondary">
+                            <span class="material-symbols-outlined">add</span>
+                            Mi Lista
+                        </button>
+                        <button class="modal-action-btn icon-only">
+                            <span class="material-symbols-outlined">thumb_up</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-extra-info">
+                        <div class="info-row">
+                            <span class="info-label">Director:</span>
+                            <span class="info-value" id="modal-director">Ryan Coogler</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Reparto:</span>
+                            <span class="info-value" id="modal-cast">Letitia Wright, Lupita Nyong'o, Danai Gurira</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
