@@ -144,6 +144,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 searchInput.value = "";
             }
         });
+
+        // LIVE SEARCH LISTENER
+        searchInput.addEventListener("input", (e) => {
+            const searchTerm = e.target.value;
+            // Get current active category
+            const activeBtn = document.querySelector(".filter-btn.active");
+            const category = activeBtn ? activeBtn.getAttribute("data-category") : "";
+
+            loadMovies(category, searchTerm);
+        });
+
+        // Close on Enter key
+        searchInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                searchContainer.classList.remove("active");
+            }
+        });
     }
 });
 
