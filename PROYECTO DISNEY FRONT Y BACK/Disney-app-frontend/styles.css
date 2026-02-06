@@ -144,6 +144,50 @@ nav {
     border-bottom: none;
 }
 
+/* Search Icon Button */
+.search-icon-btn {
+    background: none;
+    border: none;
+    color: #f9f9f9;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    margin-right: 20px;
+    position: relative;
+}
+
+.search-icon-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.search-icon-btn .material-symbols-outlined {
+    font-size: 24px;
+}
+
+/* Animated underline for search icon */
+.search-icon-btn::after {
+    content: "";
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: scaleX(0);
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.search-icon-btn:hover::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
 /* Botón de suscripción en nav */
 .btn-subscribe {
     background: linear-gradient(90deg, #0063e5 0%, #0045a5 100%);
@@ -381,24 +425,24 @@ nav {
 }
 
 /* Specific Images */
-.brand-action::after {
-    background-image: url('https://images.unsplash.com/photo-1533613220915-609f661a6fe1?auto=format&fit=crop&w=600&q=80');
+.brand-starwars::after {
+    background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80');
 }
 
-.brand-drama::after {
-    background-image: url('https://images.unsplash.com/photo-1594909122845-11baa439b7bf?auto=format&fit=crop&w=600&q=80');
+.brand-pixar::after {
+    background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=600&q=80');
 }
 
-.brand-misterio::after {
-    background-image: url('https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?auto=format&fit=crop&w=600&q=80');
+.brand-natgeo::after {
+    background-image: url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=600&q=80');
 }
 
-.brand-romance::after {
-    background-image: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80');
+.brand-marvel::after {
+    background-image: url('https://images.unsplash.com/photo-1635863138275-d9b33299680b?auto=format&fit=crop&w=600&q=80');
 }
 
-.brand-terror::after {
-    background-image: url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&w=600&q=80');
+.brand-star::after {
+    background-image: url('https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=600&q=80');
 }
 
 .brand-card:hover::after {
@@ -414,6 +458,53 @@ nav {
     /* Text always on top */
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+/* Brand-specific typography */
+.brand-starwars .brand-text {
+    /* Star Jedi style - using system fallbacks for sci-fi look */
+    font-family: 'Franklin Gothic Heavy', 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.brand-pixar .brand-text {
+    /* Charlemagne Std - using serif fallback */
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.brand-natgeo .brand-text {
+    /* Geograph / Futura */
+    font-family: 'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.brand-marvel .brand-text {
+    /* Benton Sans Compressed - using condensed sans fallback */
+    font-family: 'Arial Narrow', 'Helvetica Condensed', 'Franklin Gothic Demi Cond', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.brand-star .brand-text {
+    /* Archivo Italic */
+    font-family: 'Archivo', sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 /* --- PELÍCULAS --- */
