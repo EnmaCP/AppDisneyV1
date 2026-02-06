@@ -3,9 +3,12 @@ const API = "http://localhost:3000/api/movies";
 // Seleccionamos el contenedor que creamos en el HTML
 const $container = document.getElementById("movies-container");
 
-async function loadMovies(category = "") {
+async function loadMovies(category = "", search = "") {
     try {
-        const url = category ? `${API}?category=${category}` : API;
+        let url = `${API}?`;
+        if (category) url += `category=${category}&`;
+        if (search) url += `search=${search}&`;
+
         const response = await fetch(url);
         const data = await response.json();
 
@@ -36,7 +39,7 @@ async function loadMovies(category = "") {
                 <h3>${item.movie}</h3>
                 <div class="meta-info">
                     <span class="badge">PG-13</span>
-                    <span>2024</span>
+                    <span>${item.year || 'Unknown'}</span>
                 </div>
                 <div class="card-buttons">
                     <button class="btn-play"><span class="material-symbols-outlined fill-icon">play_arrow</span></button>
@@ -69,7 +72,9 @@ filterButtons.forEach(btn => {
         btn.classList.add("active");
 
         const category = btn.getAttribute("data-category");
-        loadMovies(category);
+        // Get current search if any
+        const search = document.getElementById("search-input").value;
+        loadMovies(category, search);
     });
 });
 
