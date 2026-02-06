@@ -47,9 +47,9 @@
             <div class="title-block">
                 <div class="sub-title">
                     <span class="material-symbols-outlined">visibility</span>
-                    Género
+                    Sagas
                 </div>
-                <h1>Misterio</h1>
+                <h1>National Geographic</h1>
             </div>
 
             <div class="sort-block">
@@ -63,113 +63,8 @@
             </div>
         </div>
 
-        <div class="media-grid">
-
-            <div class="poster-card">
-                <div class="card-image-wrapper">
-                    <img alt="Shutter Island"
-                        src="https://play-lh.googleusercontent.com/lrDTJU_tTz9FefyFjcW571Tf4G_57ofuY9BSk_8KVfvt6RTRCrQMGtSNAmYrLHNzkezFNQ=w240-h480-rw" />
-                    <div class="poster-overlay">
-                        <div class="poster-content">
-                            <h3>Shutter Island</h3>
-                            <div class="meta-info">
-                                <span class="badge">R</span>
-                                <span>2010</span>
-                            </div>
-                            <div class="card-buttons">
-                                <button class="btn-play"><span
-                                        class="material-symbols-outlined fill-icon">play_arrow</span></button>
-                                <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="poster-card">
-                <div class="card-image-wrapper">
-                    <img alt="Knives Out"
-                        src="https://m.media-amazon.com/images/M/MV5BZmYxOTAxYjgtMWQ3NC00ZTFlLWJiYjMtOGNiMGIwZDMwNzEzXkEyXkFqcGc@._V1_.jpg" />
-                    <div class="poster-overlay">
-                        <div class="poster-content">
-                            <h3>Knives Out</h3>
-                            <div class="meta-info">
-                                <span class="badge">PG-13</span>
-                                <span>2019</span>
-                            </div>
-                            <div class="card-buttons">
-                                <button class="btn-play"><span
-                                        class="material-symbols-outlined fill-icon">play_arrow</span></button>
-                                <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="poster-card">
-                <div class="card-image-wrapper">
-                    <img alt="Se7en"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlaVBZqBUXXEOYx3umTFVXuyzXswurIrl--A&s" />
-                    <div class="poster-overlay">
-                        <div class="poster-content">
-                            <h3>Se7en</h3>
-                            <div class="meta-info">
-                                <span class="badge">R</span>
-                                <span>1995</span>
-                            </div>
-                            <div class="card-buttons">
-                                <button class="btn-play"><span
-                                        class="material-symbols-outlined fill-icon">play_arrow</span></button>
-                                <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="poster-card">
-                <div class="card-image-wrapper">
-                    <img alt="Zodiac"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo9fqxObXsLdFYCbh9TG3abGkIIY38SO9IHg&s" />
-                    <div class="poster-overlay">
-                        <div class="poster-content">
-                            <h3>Zodiac</h3>
-                            <div class="meta-info">
-                                <span class="badge">R</span>
-                                <span>2007</span>
-                            </div>
-                            <div class="card-buttons">
-                                <button class="btn-play"><span
-                                        class="material-symbols-outlined fill-icon">play_arrow</span></button>
-                                <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="poster-card">
-                <div class="card-image-wrapper">
-                    <img alt="Gone Girl"
-                        src="https://m.media-amazon.com/images/M/MV5BYmQ5NDY1NmItZWUyZi00NjY1LWE0ZTQtNTBmZmRlOWZkY2VhXkEyXkFqcGc@._V1_.jpg" />
-                    <div class="poster-overlay">
-                        <div class="poster-content">
-                            <h3>Gone Girl</h3>
-                            <div class="meta-info">
-                                <span class="badge">R</span>
-                                <span>2014</span>
-                            </div>
-                            <div class="card-buttons">
-                                <button class="btn-play"><span
-                                        class="material-symbols-outlined fill-icon">play_arrow</span></button>
-                                <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <div class="media-grid" id="movies-container">
+            <!-- Movies will be loaded here via app.js -->
         </div>
 
     </main>
@@ -201,6 +96,9 @@
     </footer>
 </body>
 
+<script>
+    window.defaultCategory = 'national_geographic';
+</script>
 <script src="app.js"></script>
 <!-- Search Overlay -->
 <div id="search-overlay" class="search-overlay">

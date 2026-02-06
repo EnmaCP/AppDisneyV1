@@ -47,9 +47,9 @@
             <div class="title-block">
                 <div class="sub-title">
                     <span class="material-symbols-outlined">favorite</span>
-                    Género
+                    Sagas
                 </div>
-                <h1>Romance</h1>
+                <h1>Marvel</h1>
             </div>
 
             <div class="sort-block">
@@ -63,112 +63,8 @@
             </div>
         </div>
 
-        <div class="media-grid">
-
-            <div class="poster-card">
-                <div class="card-image-wrapper">
-                    <img alt="The Notebook"
-                        src="https://play-lh.googleusercontent.com/MGZioJEEiRHyC0kNqBBew_WPCbrK9a1ARy89CBgUbV5UcObaNDt5E0yTutuJKrDXwUbtzh-BUxlms9L_KA" />
-                    <div class="poster-overlay">
-                        <div class="poster-content">
-                            <h3>The Notebook</h3>
-                            <div class="meta-info">
-                                <span class="badge">PG-13</span>
-                                <span>2004</span>
-                            </div>
-                            <div class="card-buttons">
-                                <button class="btn-play"><span
-                                        class="material-symbols-outlined fill-icon">play_arrow</span></button>
-                                <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="poster-card">
-                <div class="card-image-wrapper">
-                    <img alt="La La Land"
-                        src="https://resizing.flixster.com/6XuKxt7l5t0HypEmD84-jNAFlZs=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p12386480_p_v10_af.jpg" />
-                    <div class="poster-overlay">
-                        <div class="poster-content">
-                            <h3>La La Land</h3>
-                            <div class="meta-info">
-                                <span class="badge">PG-13</span>
-                                <span>2016</span>
-                            </div>
-                            <div class="card-buttons">
-                                <button class="btn-play"><span
-                                        class="material-symbols-outlined fill-icon">play_arrow</span></button>
-                                <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="poster-card">
-                <div class="card-image-wrapper">
-                    <img alt="Pride and Prejudice"
-                        src="https://m.media-amazon.com/images/S/pv-target-images/15a41e61c30b3e9df74d61ac747fe3e1d5dc4ba30cf8ca3ac85a9148344efeba.jpg" />
-                    <div class="poster-overlay">
-                        <div class="poster-content">
-                            <h3>Pride and Prejudice</h3>
-                            <div class="meta-info">
-                                <span class="badge">PG</span>
-                                <span>2005</span>
-                            </div>
-                            <div class="card-buttons">
-                                <button class="btn-play"><span
-                                        class="material-symbols-outlined fill-icon">play_arrow</span></button>
-                                <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="poster-card">
-                <div class="card-image-wrapper">
-                    <img alt="Me Before You"
-                        src="https://m.media-amazon.com/images/S/pv-target-images/20d5708d15616c1cacb57351d47118756a5abd3037583b62b8ebe44525ae54d9.jpg" />
-                    <div class="poster-overlay">
-                        <div class="poster-content">
-                            <h3>Me Before You</h3>
-                            <div class="meta-info">
-                                <span class="badge">PG-13</span>
-                                <span>2016</span>
-                            </div>
-                            <div class="card-buttons">
-                                <button class="btn-play"><span
-                                        class="material-symbols-outlined fill-icon">play_arrow</span></button>
-                                <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="poster-card">
-                <div class="card-image-wrapper">
-                    <img alt="About Time" src="https://pics.filmaffinity.com/About_Time-277648846-large.jpg" />
-                    <div class="poster-overlay">
-                        <div class="poster-content">
-                            <h3>About Time</h3>
-                            <div class="meta-info">
-                                <span class="badge">R</span>
-                                <span>2013</span>
-                            </div>
-                            <div class="card-buttons">
-                                <button class="btn-play"><span
-                                        class="material-symbols-outlined fill-icon">play_arrow</span></button>
-                                <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <div class="media-grid" id="movies-container">
+            <!-- Movies will be loaded here via app.js -->
         </div>
 
     </main>
@@ -200,6 +96,9 @@
     </footer>
 </body>
 
+<script>
+    window.defaultCategory = 'marvel';
+</script>
 <script src="app.js"></script>
 <!-- Search Overlay -->
 <div id="search-overlay" class="search-overlay">

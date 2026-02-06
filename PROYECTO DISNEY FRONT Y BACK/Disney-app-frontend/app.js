@@ -79,7 +79,8 @@ filterButtons.forEach(btn => {
 });
 
 // Ejecutamos la función inicial
-loadMovies();
+const initialCategory = window.defaultCategory || "";
+loadMovies(initialCategory);
 
 // Scroll Logic
 // Scroll Logic

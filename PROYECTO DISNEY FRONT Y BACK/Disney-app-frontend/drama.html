@@ -47,9 +47,9 @@
             <div class="title-block">
                 <div class="sub-title">
                     <span class="material-symbols-outlined">theater_comedy</span>
-                    Género
+                    Sagas
                 </div>
-                <h1>Drama</h1>
+                <h1>Pixar</h1>
             </div>
 
             <div class="sort-block">
@@ -63,112 +63,8 @@
             </div>
         </div>
 
-        <div class="media-grid">
-
-            <div class="poster-card">
-                <div class="card-image-wrapper">
-                    <img alt="Bohemian Rhapsody"
-                        src="https://es.web.img3.acsta.net/pictures/18/05/21/12/50/1518397.jpg" />
-                    <div class="poster-overlay">
-                        <div class="poster-content">
-                            <h3>Bohemian Rhapsody</h3>
-                            <div class="meta-info">
-                                <span class="badge">PG-13</span>
-                                <span>2018</span>
-                            </div>
-                            <div class="card-buttons">
-                                <button class="btn-play"><span
-                                        class="material-symbols-outlined fill-icon">play_arrow</span></button>
-                                <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="poster-card">
-                <div class="card-image-wrapper">
-                    <img alt="Titanic" src="https://pics.filmaffinity.com/Titanic-704052013-large.jpg" />
-                    <div class="poster-overlay">
-                        <div class="poster-content">
-                            <h3>Titanic</h3>
-                            <div class="meta-info">
-                                <span class="badge">PG-13</span>
-                                <span>1997</span>
-                            </div>
-                            <div class="card-buttons">
-                                <button class="btn-play"><span
-                                        class="material-symbols-outlined fill-icon">play_arrow</span></button>
-                                <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="poster-card">
-                <div class="card-image-wrapper">
-                    <img alt="The Shawshank Redemption"
-                        src="https://cdn-images.dzcdn.net/images/cover/444b8089fecacd790fc5c53b6d0933aa/0x1900-000000-80-0-0.jpg" />
-                    <div class="poster-overlay">
-                        <div class="poster-content">
-                            <h3>Shawshank Redemption</h3>
-                            <div class="meta-info">
-                                <span class="badge">R</span>
-                                <span>1994</span>
-                            </div>
-                            <div class="card-buttons">
-                                <button class="btn-play"><span
-                                        class="material-symbols-outlined fill-icon">play_arrow</span></button>
-                                <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="poster-card">
-                <div class="card-image-wrapper">
-                    <img alt="Forrest Gump"
-                        src="https://m.media-amazon.com/images/I/61gJ0U3mAiL._AC_UF894,1000_QL80_.jpg" />
-                    <div class="poster-overlay">
-                        <div class="poster-content">
-                            <h3>Forrest Gump</h3>
-                            <div class="meta-info">
-                                <span class="badge">PG-13</span>
-                                <span>1994</span>
-                            </div>
-                            <div class="card-buttons">
-                                <button class="btn-play"><span
-                                        class="material-symbols-outlined fill-icon">play_arrow</span></button>
-                                <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="poster-card">
-                <div class="card-image-wrapper">
-                    <img alt="A Star Is Born"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAJGXvOYngDUjDtAu2m0AziGIX-suhHQC1HA&s" />
-                    <div class="poster-overlay">
-                        <div class="poster-content">
-                            <h3>A Star Is Born</h3>
-                            <div class="meta-info">
-                                <span class="badge">R</span>
-                                <span>2018</span>
-                            </div>
-                            <div class="card-buttons">
-                                <button class="btn-play"><span
-                                        class="material-symbols-outlined fill-icon">play_arrow</span></button>
-                                <button class="btn-plus"><span class="material-symbols-outlined">add</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <div class="media-grid" id="movies-container">
+            <!-- Movies will be loaded here via app.js -->
         </div>
 
 
@@ -201,6 +97,9 @@
     </footer>
 </body>
 
+<script>
+    window.defaultCategory = 'pixar';
+</script>
 <script src="app.js"></script>
 <!-- Search Overlay -->
 <div id="search-overlay" class="search-overlay">
