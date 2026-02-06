@@ -26,13 +26,26 @@ nav {
     /* Asegura que el padding no rompa el ancho */
 }
 
-.logo {
-    font-weight: bold;
-    font-size: 24px;
-    letter-spacing: 1.5px;
-    background: linear-gradient(to bottom, #fff, #ccc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
+.logo-svg {
+    height: 50px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    transition: filter 0.3s ease;
+}
+
+.logo-link:hover .logo-svg {
+    filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 0.3));
 }
 
 .menu-items {
@@ -142,6 +155,89 @@ nav {
 
 .dropdown-menu a:last-child {
     border-bottom: none;
+}
+
+/* Search Container */
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    position: relative;
+}
+
+/* Search Icon Button - Original Style */
+.search-icon-btn {
+    background: none;
+    border: none;
+    color: #f9f9f9;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    position: relative;
+}
+
+.search-icon-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.search-icon-btn .material-symbols-outlined {
+    font-size: 24px;
+}
+
+/* Animated underline for search icon */
+.search-icon-btn::after {
+    content: "";
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: scaleX(0);
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.search-icon-btn:hover::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+/* Expandable Search Input */
+.search-input-nav {
+    width: 0;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid transparent;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
+    margin-left: 0;
+}
+
+.search-container.active .search-input-nav {
+    width: 250px;
+    padding: 8px 16px;
+    border-color: rgba(255, 255, 255, 0.3);
+    opacity: 1;
+    margin-left: 10px;
+}
+
+.search-input-nav:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input-nav::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 /* Botón de suscripción en nav */
@@ -381,24 +477,24 @@ nav {
 }
 
 /* Specific Images */
-.brand-action::after {
-    background-image: url('https://images.unsplash.com/photo-1533613220915-609f661a6fe1?auto=format&fit=crop&w=600&q=80');
+.brand-starwars::after {
+    background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80');
 }
 
-.brand-drama::after {
-    background-image: url('https://images.unsplash.com/photo-1594909122845-11baa439b7bf?auto=format&fit=crop&w=600&q=80');
+.brand-pixar::after {
+    background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=600&q=80');
 }
 
-.brand-misterio::after {
-    background-image: url('https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?auto=format&fit=crop&w=600&q=80');
+.brand-natgeo::after {
+    background-image: url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=600&q=80');
 }
 
-.brand-romance::after {
-    background-image: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80');
+.brand-marvel::after {
+    background-image: url('https://images.unsplash.com/photo-1635863138275-d9b33299680b?auto=format&fit=crop&w=600&q=80');
 }
 
-.brand-terror::after {
-    background-image: url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&w=600&q=80');
+.brand-star::after {
+    background-image: url('https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=600&q=80');
 }
 
 .brand-card:hover::after {
@@ -414,6 +510,53 @@ nav {
     /* Text always on top */
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+/* Brand-specific typography */
+.brand-starwars .brand-text {
+    /* Star Jedi style - using system fallbacks for sci-fi look */
+    font-family: 'Franklin Gothic Heavy', 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.brand-pixar .brand-text {
+    /* Charlemagne Std - using serif fallback */
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.brand-natgeo .brand-text {
+    /* Geograph / Futura */
+    font-family: 'Futura', 'Century Gothic', 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.brand-marvel .brand-text {
+    /* Benton Sans Compressed - using condensed sans fallback */
+    font-family: 'Arial Narrow', 'Helvetica Condensed', 'Franklin Gothic Demi Cond', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.brand-star .brand-text {
+    /* Archivo Italic */
+    font-family: 'Archivo', sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 /* --- PELÍCULAS --- */
@@ -1437,75 +1580,401 @@ h4 {
     }
 }
 
-/* --- SEARCH OVERLAY --- */
-.search-overlay {
+
+.close-search-btn .material-symbols-outlined {
+    font-size: 40px;
+}
+
+/* --- MOVIE DETAIL MODAL --- */
+.movie-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.9);
-    z-index: 1000;
+    z-index: 2000;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
-.search-overlay.active {
+.movie-modal.active {
     opacity: 1;
     visibility: visible;
 }
 
-.search-content {
-    display: flex;
-    align-items: center;
-    width: 80%;
-    max-width: 800px;
-    position: relative;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 10px;
-}
-
-.search-icon {
-    font-size: 40px;
-    color: #ccc;
-    margin-right: 20px;
-}
-
-#search-input {
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    background: transparent;
-    border: none;
-    font-size: 40px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.modal-container {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    background: linear-gradient(135deg, #1e1f2a 0%, #0e1017 100%);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.movie-modal.active .modal-container {
+    transform: scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
-    outline: none;
-    font-weight: bold;
-}
-
-#search-input::placeholder {
-    color: #555;
-    font-weight: normal;
-}
-
-.close-search-btn {
-    background: transparent;
-    border: none;
-    color: #ccc;
     cursor: pointer;
-    font-size: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.2s;
+    z-index: 10;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
 }
 
-.close-search-btn:hover {
+.modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg) scale(1.1);
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+@media (min-width: 768px) {
+    .modal-content {
+        flex-direction: row;
+    }
+}
+
+/* Modal Poster Section */
+.modal-poster {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    background: #000;
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .modal-poster {
+        width: 40%;
+        min-height: 600px;
+    }
+}
+
+.modal-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-poster-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 50%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 30px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-poster:hover .modal-poster-overlay {
+    opacity: 1;
+}
+
+.modal-play-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.modal-play-btn:hover {
+    background: #e0e0e0;
+    transform: scale(1.05);
+}
+
+/* Modal Info Section */
+.modal-info {
+    padding: 40px 30px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.modal-title {
+    margin: 0 0 20px 0;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.2;
+    background: linear-gradient(180deg, #FFFFFF 0%, #b0b0b0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.modal-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #cecece;
+}
+
+.modal-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255, 193, 7, 0.15);
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.star-icon {
+    color: #ffc107;
+    font-size: 18px;
+    font-variation-settings: 'FILL' 1;
+}
+
+.modal-rating-value {
+    font-weight: bold;
+    color: #ffc107;
+}
+
+.modal-year,
+.modal-duration {
+    font-weight: 500;
+}
+
+.modal-badge {
+    background-color: #444;
+    border: 1px solid #666;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.modal-genres {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.genre-tag {
+    background: rgba(43, 108, 238, 0.15);
+    border: 1px solid rgba(43, 108, 238, 0.4);
+    color: #6ba3ff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.modal-description {
+    color: #cecece;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.modal-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.modal-action-btn.primary {
+    background: linear-gradient(90deg, #0063e5 0%, #0045a5 100%);
     color: white;
+    box-shadow: 0 4px 15px rgba(0, 99, 229, 0.4);
 }
 
-.close-search-btn .material-symbols-outlined {
-    font-size: 40px;
+.modal-action-btn.primary:hover {
+    background: linear-gradient(90deg, #0483ee 0%, #0063e5 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 99, 229, 0.6);
+}
+
+.modal-action-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.modal-action-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.modal-action-btn.icon-only {
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.modal-action-btn.icon-only:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.modal-extra-info {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.info-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.info-label {
+    color: #888;
+    font-weight: 600;
+    min-width: 80px;
+}
+
+.info-value {
+    color: #cecece;
+    flex: 1;
+}
+
+/* Enhanced Poster Card Hover Effects */
+.poster-card {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.poster-card::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: linear-gradient(135deg, rgba(43, 108, 238, 0.5), rgba(0, 99, 229, 0.5));
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.poster-card:hover::before {
+    opacity: 1;
+}
+
+.poster-card:hover {
+    transform: scale(1.08) translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8),
+        0 0 30px rgba(43, 108, 238, 0.3);
+}
+
+/* Add rating display on hover for existing cards */
+.poster-overlay::after {
+    content: '★ 4.5';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffc107;
+    backdrop-filter: blur(5px);
+}
+
+/* Smooth scrollbar for modal */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modal-container {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .modal-title {
+        font-size: 24px;
+    }
+
+    .modal-info {
+        padding: 30px 20px;
+    }
+
+    .modal-poster {
+        min-height: 300px;
+    }
 }
