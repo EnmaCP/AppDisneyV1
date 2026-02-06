@@ -28,12 +28,23 @@ async function loadMovies(category = "", search = "") {
                 const card = document.createElement("div");
                 card.className = "poster-card"; // Usamos la nueva clase
 
-                // Usamos una imagen por defecto si la API no trae una
-                const imgUrl = item.imagen_url || `https://source.unsplash.com/random/300x450?movie&sig=${Math.random()}`;
+                // Manual image overrides for specific broken movies
+                const imageOverrides = {
+                    "Star Wars: Episode I - The Phantom Menace": "https://m.media-amazon.com/images/M/MV5BODlhZTEyZjItNGI3NC00ZjI4LThkZmQtYTc1MjVjZDQ5MzZlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX1000_.jpg",
+                    "Star Wars: The Phantom Menace": "https://m.media-amazon.com/images/M/MV5BODlhZTEyZjItNGI3NC00ZjI4LThkZmQtYTc1MjVjZDQ5MzZlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX1000_.jpg",
+                    // Add more overrides here if needed
+                };
+
+                // Use override if available, otherwise API URL, otherwise reliable placeholder
+                let imgUrl = imageOverrides[item.movie] || item.imagen_url;
+
+                if (!imgUrl) {
+                    imgUrl = `https://placehold.co/300x450?text=${encodeURIComponent(item.movie)}`;
+                }
 
                 card.innerHTML = `
     <div class="card-image-wrapper">
-        <img src="${imgUrl}" alt="${item.movie}" />
+        <img src="${imgUrl}" alt="${item.movie}" onerror="this.onerror=null; this.src='https://placehold.co/300x450?text=No+Image';" />
         <div class="poster-overlay">
             <div class="poster-content">
                 <h3>${item.movie}</h3>
