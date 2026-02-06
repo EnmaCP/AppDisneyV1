@@ -73,7 +73,7 @@ filterButtons.forEach(btn => {
 
         const category = btn.getAttribute("data-category");
         // Get current search if any
-        const search = document.getElementById("search-input").value;
+        const search = document.getElementById("search-input-nav").value;
         loadMovies(category, search);
     });
 });

@@ -10,22 +10,57 @@
 
 <body>
     <nav>
-        <div class="logo">DISNEY CLASSICS</div>
+        <a href="index.html" class="logo-link">
+            <svg class="logo-svg" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#a0a0a0;stop-opacity:1" />
+                    </linearGradient>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+                        <feMerge>
+                            <feMergeNode in="coloredBlur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                </defs>
+                <!-- Star accent -->
+                <path d="M 15,15 L 17,20 L 22,20 L 18,23 L 20,28 L 15,25 L 10,28 L 12,23 L 8,20 L 13,20 Z"
+                    fill="url(#logoGradient)" filter="url(#glow)" opacity="0.8" />
+                <!-- Text -->
+                <text x="30" y="35" font-family="'Arial Black', sans-serif" font-size="20" font-weight="900"
+                    fill="url(#logoGradient)" letter-spacing="2">
+                    DISNEY
+                </text>
+                <text x="30" y="52" font-family="'Arial', sans-serif" font-size="12" font-weight="600"
+                    fill="url(#logoGradient)" letter-spacing="3">
+                    CLASSICS
+                </text>
+            </svg>
+        </a>
         <div class="menu-items">
             <a href="index.html">Inicio</a>
-            <a href="#" id="btn-search-nav">Búsqueda</a>
             <a href="#">Originales</a>
             <a href="#">Películas</a>
         </div>
+
+        <div class="search-container" id="search-container">
+            <button id="btn-search-nav" class="search-icon-btn">
+                <span class="material-symbols-outlined">search</span>
+            </button>
+            <input type="text" id="search-input-nav" class="search-input-nav" placeholder="Buscar películas..." />
+        </div>
+
+        <a href="subs.html" class="btn-subscribe">PLAN DE SUBSCRIPCIONES</a>
+
         <div class="profile-container">
             <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
                 alt="Perfil" class="avatar-img">
-
             <div class="dropdown-menu">
-                <a href="#">Editar Perfiles</a>
-                <a href="#">Ajustes de Cuenta</a>
-                <a href="#">Ayuda</a>
-                <a href="#" style="color: #ff4f4f;">Cerrar Sesión</a>
+                <a href="#">Ajustes</a>
+                <a href="login.html">Iniciar Sesión</a>
+                <a href="#">Cerrar Sesión</a>
             </div>
         </div>
     </nav>
@@ -75,14 +110,5 @@
         </div>
     </main>
     <script src="app.js"></script>
-    <!-- Search Overlay -->
-    <div id="search-overlay" class="search-overlay">
-        <div class="search-content">
-            <span class="material-symbols-outlined search-icon">search</span>
-            <input type="text" id="search-input" placeholder="Títulos, personajes o géneros" autocomplete="off">
-            <button id="close-search" class="close-search-btn">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-        </div>
-    </div>
+
 </body>
